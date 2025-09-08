@@ -1,5 +1,6 @@
 package id.izzanfi.bookstoreserviceapi.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -44,5 +45,6 @@ public class Bookstore extends AuditTrail {
   private boolean isActive = true;
 
   @OneToMany(mappedBy = "bookstore")
+  @JsonManagedReference("bookstore-bookStock")
   private Set<BookStock> bookStocks = new HashSet<>();
 }

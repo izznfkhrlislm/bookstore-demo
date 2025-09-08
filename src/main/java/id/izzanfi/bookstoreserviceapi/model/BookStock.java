@@ -1,5 +1,6 @@
 package id.izzanfi.bookstoreserviceapi.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -31,10 +32,12 @@ public class BookStock extends AuditTrail {
 
   @ManyToOne(fetch = FetchType.LAZY)
   @JoinColumn(name = "book_id")
+  @JsonBackReference("book-bookStock")
   private Book book;
 
   @ManyToOne(fetch = FetchType.LAZY)
   @JoinColumn(name = "bookstore_id")
+  @JsonBackReference("bookstore-bookStock")
   private Bookstore bookstore;
 
   @Column(name = "stock", nullable = false)

@@ -6,5 +6,5 @@ RUN gradle clean build
 FROM openjdk:17-jdk-slim
 WORKDIR /app
 COPY --from=builder /app/build/libs/*.jar app.jar
-ENTRYPOINT ["java","-jar","/app/app.jar"]
+ENTRYPOINT ["java","-jar","/app/app.jar","--spring.profiles.active=LIVE"]
 EXPOSE 8080
